@@ -5,7 +5,7 @@ window.onload = async () => {
 
   // 1️⃣ Fetch countries from backend
   try {
-    const response = await fetch("http://localhost:5000/countries");
+    const response = await fetch("https://alternate-life-engine.onrender.com/countries");
     const countries = await response.json();
 
     countries.forEach(country => {
@@ -49,13 +49,7 @@ async function simulate(event) {
   };
 
   try {
-    const response = await fetch("http://localhost:5000/simulate", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(payload)
-    });
+    const response = await fetch("https://alternate-life-engine.onrender.com/simulate");
 
     const data = await response.json();
 
