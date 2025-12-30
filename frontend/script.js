@@ -1,30 +1,35 @@
+// 🔗 Production backend URL (Render)
+const API_BASE = "https://alternate-life-engine.onrender.com";
+
+/**
+ * Load countries + careers when page loads
+ */
 window.onload = async () => {
   const currentCountrySelect = document.getElementById("currentCountry");
   const alternateCountrySelect = document.getElementById("alternateCountry");
   const careerSelect = document.getElementById("career");
 
-  // 1️⃣ Fetch countries from backend
+  // 🔹 Load countries from backend
   try {
-    const response = await fetch("https://alternate-life-engine.onrender.com/countries");
-    const countries = await response.json();
+    const res = await fetch(`${API_BASE}/countries`);
+    const countries = await res.json();
 
     countries.forEach(country => {
       currentCountrySelect.add(new Option(country, country));
       alternateCountrySelect.add(new Option(country, country));
     });
   } catch (err) {
-    alert("Failed to load countries from server");
+    alert("❌ Failed to load countries from server");
     console.error(err);
   }
 
-  // 2️⃣ Careers (can also be backend-driven later)
+  // 🔹 Careers (must match backend careers.json keys)
   const careers = [
-  "Engineer",
-  "Software Developer",
-  "Doctor",
-  "Business Owner"
-];
-
+    "Engineer",
+    "Software Developer",
+    "Doctor",
+    "Business Owner"
+  ];
 
   careers.forEach(career => {
     careerSelect.add(new Option(career, career));
@@ -32,14 +37,18 @@ window.onload = async () => {
 };
 
 /**
- * Simulate life
+ * Simulate alternate life
  */
 async function simulate(event) {
   event.preventDefault();
 
-  document.getElementById("loading").style.display = "block";
-  document.getElementById("lifeCard").classList.add("hidden");
+  const loading = document.getElementById("loading");
+  const lifeCard = document.getElementById("lifeCard");
 
+  loading.style.display = "block";
+  lifeCard.classList.add("hidden");
+
+  // 🔹 Build request payload
   const payload = {
     name: document.getElementById("name").value,
     age: Number(document.getElementById("age").value),
@@ -49,20 +58,26 @@ async function simulate(event) {
   };
 
   try {
-    const response = await fetch("https://alternate-life-engine.onrender.com/simulate");
+    const response = await fetch(`${API_BASE}/simulate`, {
+      method: "POST",                 // ✅ MUST be POST
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    });
+
+    // ❌ Handle API errors safely
+    if (!response.ok) {
+      const text = await response.text();
+      throw new Error(text);
+    }
 
     const data = await response.json();
 
-    document.getElementById("loading").style.display = "none";
+    loading.style.display = "none";
+    lifeCard.classList.remove("hidden");
 
-    if (data.error) {
-      alert(data.error);
-      return;
-    }
-
-    // Show result
-    document.getElementById("lifeCard").classList.remove("hidden");
-
+    // 🔹 Fill UI with response data
     document.getElementById("outName").innerText = data.name;
     document.getElementById("outCurrentCountry").innerText = data.currentCountry;
     document.getElementById("outAlternateCountry").innerText = data.alternateCountry;
@@ -75,8 +90,8 @@ async function simulate(event) {
     document.getElementById("lifeStory").innerText = data.story;
 
   } catch (error) {
-    document.getElementById("loading").style.display = "none";
-    alert("Server error. Check backend.");
-    console.error(error);
+    loading.style.display = "none";
+    alert("❌ Simulation failed. Please try again.");
+    console.error("Simulation error:", error);
   }
 }
