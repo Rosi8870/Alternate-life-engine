@@ -1,0 +1,69 @@
+{
+  "Engineer": [
+    {
+      "path": "Corporate Engineer",
+      "probability": 60,
+      "income": 75,
+      "stress": 40,
+      "satisfaction": 75
+    },
+    {
+      "path": "Research Engineer",
+      "probability": 40,
+      "income": 65,
+      "stress": 30,
+      "satisfaction": 85
+    }
+  ],
+
+  "Software Developer": [
+    {
+      "path": "Product Developer",
+      "probability": 60,
+      "income": 85,
+      "stress": 45,
+      "satisfaction": 80
+    },
+    {
+      "path": "Startup Developer",
+      "probability": 40,
+      "income": 95,
+      "stress": 70,
+      "satisfaction": 78
+    }
+  ],
+
+  "Doctor": [
+    {
+      "path": "Hospital Doctor",
+      "probability": 70,
+      "income": 80,
+      "stress": 65,
+      "satisfaction": 75
+    },
+    {
+      "path": "Specialist Doctor",
+      "probability": 30,
+      "income": 95,
+      "stress": 75,
+      "satisfaction": 85
+    }
+  ],
+
+  "Business Owner": [
+    {
+      "path": "Small Business Owner",
+      "probability": 60,
+      "income": 70,
+      "stress": 60,
+      "satisfaction": 70
+    },
+    {
+      "path": "Startup Founder",
+      "probability": 40,
+      "income": 100,
+      "stress": 85,
+      "satisfaction": 88
+    }
+  ]
+}

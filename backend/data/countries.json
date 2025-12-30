@@ -1,0 +1,26 @@
+{
+  "India": {
+    "workLifeBalance": 50,
+    "jobStability": 60
+  },
+  "Germany": {
+    "workLifeBalance": 80,
+    "jobStability": 85
+  },
+  "USA": {
+    "workLifeBalance": 65,
+    "jobStability": 70
+  },
+  "Canada": {
+    "workLifeBalance": 78,
+    "jobStability": 80
+  },
+  "UK": {
+    "workLifeBalance": 70,
+    "jobStability": 75
+  },
+  "Australia": {
+    "workLifeBalance": 85,
+    "jobStability": 80
+  }
+}

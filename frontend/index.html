@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alternate Life Engine</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="hero">
+  <h1>Alternate Life Engine</h1>
+  <p>See how your life could change in another country.</p>
+</header>
+
+<main class="container">
+
+  <form class="form-card" onsubmit="simulate(event)">
+    <h2>Your Details</h2>
+
+    <div class="grid">
+      <div>
+        <label>Name</label>
+        <input id="name" required placeholder="Your name" />
+      </div>
+
+      <div>
+        <label>Age</label>
+        <input id="age" type="number" required placeholder="Age" />
+      </div>
+    </div>
+
+    <div class="grid">
+      <div>
+        <label>Profession</label>
+        <select id="career"></select>
+      </div>
+
+      <div>
+        <label>Your Country</label>
+        <select id="currentCountry"></select>
+      </div>
+    </div>
+
+    <div>
+      <label>Alternate Country</label>
+      <select id="alternateCountry"></select>
+    </div>
+
+    <button type="submit">Simulate Alternate Life</button>
+
+    <p id="loading" class="loading">🤖 Creating your alternate life...</p>
+  </form>
+
+  <div id="lifeCard" class="result-card hidden">
+    <h3>Your Alternate Life</h3>
+
+    <p><strong>Name:</strong> <span id="outName"></span></p>
+    <p><strong>From:</strong> <span id="outCurrentCountry"></span></p>
+    <p><strong>Living In:</strong> <span id="outAlternateCountry"></span></p>
+    <p><strong>Career Path:</strong> <span id="careerPath"></span></p>
+
+    <div class="meter">
+      <span>Income</span>
+      <div class="bar"><div id="incomeBar" class="fill"></div></div>
+    </div>
+
+    <div class="meter">
+      <span>Stress</span>
+      <div class="bar"><div id="stressBar" class="fill stress"></div></div>
+    </div>
+
+    <div class="meter">
+      <span>Life Satisfaction</span>
+      <div class="bar"><div id="lifeBar" class="fill life"></div></div>
+    </div>
+
+    <div class="story">
+      <h4>AI Life Story</h4>
+      <p id="lifeStory"></p>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2026 Roshinth Sojan</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
